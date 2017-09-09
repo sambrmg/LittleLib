@@ -1,0 +1,8 @@
+/** Normalization */
+body { margin: 0; }
+article,aside,footer,header,nav,section { display: block; }
+h1 { font-size: 1.8em; margin: 0.65em 0; }
+audio,video,canvas { display: inline-block; }
+button,input,select,textarea { font-family: sans-serif; font-size: 100%; line-height: 1.15; margin: 0; }
+code,kbd,pre,samp { font-family: monospace, monospace; font-size: 1em; }
+hr { box-sizing: content-box; height: 0; overflow: visible; }
