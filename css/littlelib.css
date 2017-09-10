@@ -6,3 +6,28 @@ audio,video,canvas { display: inline-block; }
 button,input,select,textarea { font-family: sans-serif; font-size: 100%; line-height: 1.15; margin: 0; }
 code,kbd,pre,samp { font-family: monospace, monospace; font-size: 1em; }
 hr { box-sizing: content-box; height: 0; overflow: visible; }
+
+.main-menu{
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #222933;
+}
+.main-menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.main-menu ul li a{
+    padding: 15px;
+    display: block;
+    text-decoration: none;
+    color: #687384;
+}
+.main-menu ul li a:hover{
+    color: white;
+    background-color: #28313E;
+}
