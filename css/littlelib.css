@@ -15,19 +15,43 @@ hr { box-sizing: content-box; height: 0; overflow: visible; }
     bottom: 0;
     background-color: #222933;
 }
+
+.ll-main-menu a{
+    display: block;
+    text-decoration: none;
+    color: #a0b5d7;
+    cursor: pointer;
+    padding: 10px 0px;
+}
+
+.ll-main-menu a:hover{
+    color: white;
+}
+
 .ll-main-menu ul{
     list-style: none;
     margin: 0;
     padding: 0;
     height: 100%;
 }
-.ll-main-menu ul li a{
-    padding: 15px;
-    display: block;
-    text-decoration: none;
-    color: #a0b5d7;
+
+.ll-main-menu .level-1 > li > a{
+    padding-left: 15px;
 }
-.ll-main-menu ul li a:hover{
-    color: white;
-    background-color: #28313E;
+
+.ll-main-menu .level-2, .ll-main-menu .level-3 {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.6s ;
+}
+.ll-main-menu .level-2.open, .ll-main-menu .level-3.open{
+    max-height: 1000px;
+}
+
+.ll-main-menu .level-2 > li > a{
+    padding-left: 25px;
+}
+
+.ll-main-menu .level-3 > li > a{
+    padding-left: 35px;
 }
