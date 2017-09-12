@@ -2,10 +2,10 @@ var jsonMenu = [
     { 
         "label": "item 1", 
         "href": "#",
-        "n2": {
+        "n": {
                 "label":"subitem 1", 
                 "href": "#",
-                "n3": {
+                "n": {
                     "label":"sub-subitem 1",
                     "href": "#"
                 }
@@ -22,18 +22,30 @@ var jsonMenu = [
 ];
 
 function llAddLiToUl(obj){
-    var llMainMenu = document.querySelector(".ll-main-menu ul");
-    for(var i in obj) { 
-        if (obj.hasOwnProperty(i)) {
-            var li = document.createElement("li");  
-            var a = document.createElement("a");  
-            var text  = document.createTextNode(obj[i].label);
-            a.appendChild(text);
-            li.appendChild(a);
-            console.log(a);
-            console.log(li);
-            llMainMenu.appendChild(li);
+    var elUl = "";
+    for(var i in obj) {
+        if (typeof obj[i].n !== "undefined"){
+            
         }
-     }
+        if (obj.hasOwnProperty(i)) {
+            var elA = createElementAhref(obj[i].label, obj[i].href);
+            var elLi = createElementLi(elA);
+            elUl = elUl + elLi;
+        }
+    }
+    document.querySelector(".ll-main-menu").innerHTML = createElementUl(elUl);
 }
-//llAddLiToUl(jsonMenu);
+
+function createElementAhref(label, href){
+    return "<a href="+href+" >"+label+"</a>";
+}
+
+function createElementLi(elA){
+    return "<li>"+elA+"</li>";
+}
+
+function createElementUl(listOfLi){
+    return "<ul>"+listOfLi+"</ul>";
+}
+
+llAddLiToUl(jsonMenu);

@@ -14,6 +14,7 @@ hr { box-sizing: content-box; height: 0; overflow: visible; }
     left: 0;
     bottom: 0;
     background-color: #222933;
+    overflow-y: auto;
 }
 
 .ll-main-menu a{
