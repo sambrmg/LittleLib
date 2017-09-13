@@ -56,41 +56,66 @@ var jsonMenu = [
 
 function createMenu(jsonObj){
     var ul = "";
-    document.querySelector(".ll-main-menu").innerHTML = createNodeUl(jsonObj, ul);
+
+    var llMainMenu = document.querySelector(".ll-main-menu");
+    llMainMenu.appendChild(createNodeUl(jsonObj, ul));
+
+    getAllUlMainMenu();
 }
 
 function createNodeUl(jsonObj, ul){
-    var elUl = "";
+    var elUl = document.createElement("ul");
+    
     for(var i in jsonObj) {
         if (jsonObj.hasOwnProperty(i)) {
             if(typeof jsonObj[i].n === "undefined"){
-                elUl = elUl + createNodeLi(jsonObj[i].label, jsonObj[i].href, "");
+                elUl.appendChild(createNodeLi(jsonObj[i].label, jsonObj[i].href, ""));
             }else{
                 var ul = createNodeUl(jsonObj[i].n);
-                elUl = elUl + createNodeLi(jsonObj[i].label, jsonObj[i].href, ul);
+                elUl.appendChild(createNodeLi(jsonObj[i].label, jsonObj[i].href, ul));
             }
         }
         
     }
-    return createElementUl(elUl);
+
+    return elUl;
 }
 
 function createNodeLi(label, href, ul){
     var elA = createElementAhref(label, href);
     var elLi = createElementLi(elA, ul);
+
     return elLi;
 }
 
 function createElementAhref(label, href){
-    return "<a href="+href+" >"+label+"</a>";
+    var elA = document.createElement("a");        
+    var text = document.createTextNode(label);
+    elA.appendChild(text);    
+    elA.setAttribute('href', href);
+
+    return elA;
 }
 
 function createElementLi(elA, ul){
-    return "<li>"+elA+ul+"</li>";
+    var elLi = document.createElement("li");
+    elLi.appendChild(elA);
+    if(ul !== ""){
+        elLi.appendChild(ul);
+    }
+    
+    return elLi;
 }
 
-function createElementUl(listOfLi){
-    return "<ul>"+listOfLi+"</ul>";
+function getAllUlMainMenu(){
+    var allUlMainMenu = document.querySelectorAll('.ll-main-menu a');
+    for (var i = 0; i < allUlMainMenu.length; i++) {
+        allUlMainMenu[i].addEventListener('click', function (event) {
+            event.preventDefault();
+    
+            console.log(event.target);
+        });
+    }
 }
 
 createMenu(jsonMenu);
