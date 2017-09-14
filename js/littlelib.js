@@ -1,14 +1,14 @@
 var jsonMenu = [
     { 
         "label": "item 1", 
-        "href": "#",
+        "href": " ",
         "n": [
             {
                 "label":"subitem 1", 
                 "href": "#",
                 "n": [{
-                    "label":"sub-subitem 1.1",
-                    "href": "#"
+                    "label":"Google",
+                    "href": "http://www.google.com.br"
                 }]
             },{
                 "label":"subitem 2", 
@@ -55,10 +55,8 @@ var jsonMenu = [
 ];
 
 function createMenu(jsonObj){
-    var ul = "";
-
     var llMainMenu = document.querySelector(".ll-main-menu");
-    llMainMenu.appendChild(createNodeUl(jsonObj, ul));
+    llMainMenu.appendChild(createNodeUl(jsonObj, ""));
 
     getAllUlMainMenu();
 }
@@ -110,10 +108,21 @@ function createElementLi(elA, ul){
 function getAllUlMainMenu(){
     var allUlMainMenu = document.querySelectorAll('.ll-main-menu a');
     for (var i = 0; i < allUlMainMenu.length; i++) {
+        if( allUlMainMenu[i].nextSibling){
+            allUlMainMenu[i].classList.add("icon-plus");
+        }
         allUlMainMenu[i].addEventListener('click', function (event) {
-            event.preventDefault();
-    
-            console.log(event.target);
+            var el = event.target;
+            var elHref = el.getAttribute('href').trim();
+
+            if(elHref === "#" || 
+                elHref == ""){
+                event.preventDefault();
+            }
+            
+            event.target.classList.toggle("icon-plus");
+            event.target.classList.toggle("icon-minus")
+            el.nextSibling.classList.toggle("open"); 
         });
     }
 }
