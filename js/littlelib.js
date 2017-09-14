@@ -111,17 +111,25 @@ function getAllUlMainMenu(){
         if( allUlMainMenu[i].nextSibling){
             allUlMainMenu[i].classList.add("icon-plus");
         }
-        allUlMainMenu[i].addEventListener('click', function (event) {
+        allUlMainMenu[i].addEventListener('click', 
+            function (event) {
+                
             var el = event.target;
             var elHref = el.getAttribute('href').trim();
 
             if(elHref === "#" || 
                 elHref == ""){
+
                 event.preventDefault();
             }
             
-            event.target.classList.toggle("icon-plus");
-            event.target.classList.toggle("icon-minus")
+            if( el.classList.contains("icon-plus") || 
+                el.classList.contains("icon-minus") ){
+
+                el.classList.toggle("icon-plus");
+                el.classList.toggle("icon-minus");
+            }
+            
             el.nextSibling.classList.toggle("open"); 
         });
     }
