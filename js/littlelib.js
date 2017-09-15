@@ -1,57 +1,36 @@
 var jsonMenu = [
-    { 
-        "label": "item 1", 
-        "href": " ",
-        "n": [
-            {
-                "label":"subitem 1", 
-                "href": "#",
-                "n": [{
-                    "label":"Google",
-                    "href": "http://www.google.com.br"
-                }]
-            },{
-                "label":"subitem 2", 
-                "href": "#",
-                "n": [{
-                    "label":"sub-subitem 2.1",
-                    "href": "#"
-                },
-                {
-                    "label":"sub-subitem 2.2",
-                    "href": "#"
-                }]
-            }
-        ]
-    },
-    { "label": "item 2", "href": "#" },
-    { "label": "item 3", "href": "#" },
-    { "label": "item 4", "href": "#" },
-    { "label": "item 5", "href": "#" },
-    { "label": "item 6", "href": "#" },
-    { "label": "item 7", "href": "#", "n": [
+    { "label": "Amazon", "href": "http://www.amazon.com" },
+    { "label": "Apple", "href": "#", "n": [
         {
-            "label":"subitem 1", 
+            "label":"Mac", 
             "href": "#",
             "n": [{
-                "label":"sub-subitem 1.1",
-                "href": "#"
+                "label":"Macbook",
+                "href": "https://www.apple.com/macbook/"
+            },{
+                "label":"iMac",
+                "href": "https://www.apple.com/imac/"
+            },{
+                "label":"Mac Pro",
+                "href": "https://www.apple.com/mac-pro/"
             }]
         },{
-            "label":"subitem 2", 
+            "label":"iPhone", 
             "href": "#",
             "n": [{
-                "label":"sub-subitem 2.1",
-                "href": "#"
+                "label":"iPhone X",
+                "href": "https://www.apple.com/iphone-x/"
             },
             {
-                "label":"sub-subitem 2.2",
-                "href": "#"
+                "label":"iPhone 8",
+                "href": "https://www.apple.com/iphone-8/"
             }]
         }
     ]},
-    { "label": "item 8 2", "href": "#" },
-    { "label": "item 9", "href": "#" }
+    { "label": "Asus", "href": "http://www.asus.com" },
+    { "label": "Google", "href": "http://www.google.com" },
+    { "label": "Facebook", "href": "http://www.facebook.com" },
+    { "label": "Microsoft", "href": "http://www.microsoft.com" },
 ];
 
 var jsonObjMenu = [];
