@@ -10,6 +10,24 @@
     overflow-y: auto;
 }
 
+.ll-main-menu header {
+    padding: 5px 10px;
+}
+
+.ll-main-menu header form label{
+    font-size: 11px;
+    color: gray;
+}
+
+.ll-main-menu header form #searchMenu{
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #cbcbcb;
+    padding: 3px;
+    color: #636363;
+    background: #fcfcfc;
+}
+
 .ll-main-menu a{
     display: block;
     text-decoration: none;
@@ -80,3 +98,13 @@
     left: 4px;
     top: 8px;
 }
+
+@media screen and (max-width: 450px) {
+    nav.ll-main-menu{
+        width: 100%;
+    }    
+    nav.ll-main-menu a {
+        font-size: 14px;
+    }
+}
+
