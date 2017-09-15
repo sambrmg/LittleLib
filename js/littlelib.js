@@ -50,16 +50,35 @@ var jsonMenu = [
             }]
         }
     ]},
-    { "label": "item 8", "href": "#" },
+    { "label": "item 8 2", "href": "#" },
     { "label": "item 9", "href": "#" }
 ];
+
+var jsonObjMenu = [];
+
+function findInNodes(jsonObj, label){
+    var newObj = [];
+    for(var i in jsonObj) {
+        var re = new RegExp(label, "i");
+        var res = re.exec(jsonObj[i].label);
+        if(res !== null){
+            newObj.push(jsonObj[i]);
+            
+        }
+        
+    }
+    return newObj;
+}
 
 function createMenu(jsonObj){
     var llMainMenu = document.querySelector(".ll-main-menu");
     llMainMenu.appendChild(createNodeUl(jsonObj, ""));
 
-    getAllUlMainMenu();
+    addEventClickHref();
+    
 }
+
+
 
 function createNodeUl(jsonObj, ul){
     var elUl = document.createElement("ul");
@@ -105,7 +124,7 @@ function createElementLi(elA, ul){
     return elLi;
 }
 
-function getAllUlMainMenu(){
+function addEventClickHref(){
     var allUlMainMenu = document.querySelectorAll('.ll-main-menu a');
     for (var i = 0; i < allUlMainMenu.length; i++) {
         if( allUlMainMenu[i].nextSibling){
@@ -135,4 +154,35 @@ function getAllUlMainMenu(){
     }
 }
 
-createMenu(jsonMenu);
+function initMenu(jsonObjMenu){
+   
+
+    createMenu(jsonObjMenu);
+    jsonObjMenu = jsonObjMenu;
+    
+    
+
+    document.querySelector("#searchMenu").addEventListener('keyup', 
+    function (event) {
+        if(event.keyCode == 13){
+            event.preventDefault();
+        }
+        if(event.target.value.trim().length > 0){
+            var newObj = findInNodes(jsonObjMenu, event.target.value);
+            clearAllUlMenu();
+            createMenu(newObj);
+            
+        }else{
+            clearAllUlMenu();
+            createMenu(jsonObjMenu);
+            
+        }
+        
+    });
+}
+function clearAllUlMenu(){
+    var llMainMenu = document.querySelector(".ll-main-menu");
+    var ul = document.querySelector(".ll-main-menu ul");
+    llMainMenu.removeChild(ul);
+}
+initMenu(jsonMenu);
