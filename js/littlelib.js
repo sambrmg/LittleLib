@@ -40,11 +40,34 @@ function findInNodes(jsonObj, label){
     for(var i in jsonObj) {
         var re = new RegExp(label, "i");
         var res = re.exec(jsonObj[i].label);
-        if(res !== null){
+        
+        var resultChild = false;
+        if(typeof jsonObj[i].n !== "undefined"){
+           var resultChild = findInNodesRecursive(jsonObj[i].n, label);
+        }
+        if(res !== null || resultChild){
             newObj.push(jsonObj[i]);
         }
     }
     return newObj;
+}
+
+function findInNodesRecursive(jsonObj, label){
+    
+    for(var i in jsonObj) {
+        
+        if(typeof jsonObj[i].n !== "undefined"){
+            findInNodesRecursive(jsonObj[i].n, label);
+        }else{
+            var re = new RegExp(label, "i");
+            var res = re.exec(jsonObj[i].label);
+            if(res !== null){
+                return true;
+            }
+
+        }
+    }
+    return false;
 }
 
 function createMenu(jsonObj){
