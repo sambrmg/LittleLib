@@ -34,18 +34,18 @@ var jsonMenu = [
 ];
 
 var jsonObjMenu = [];
+var hasOccurrence = false;
 
 function findInNodes(jsonObj, label){
     var newObj = [];
     for(var i in jsonObj) {
         var re = new RegExp(label, "i");
         var res = re.exec(jsonObj[i].label);
-        
-        var resultChild = false;
+        hasOccurrence = false;
         if(typeof jsonObj[i].n !== "undefined"){
-           var resultChild = findInNodesRecursive(jsonObj[i].n, label);
+            findInNodesRecursive(jsonObj[i].n, label);
         }
-        if(res !== null || resultChild){
+        if(res !== null || hasOccurrence){
             newObj.push(jsonObj[i]);
         }
     }
@@ -61,13 +61,15 @@ function findInNodesRecursive(jsonObj, label){
         }else{
             var re = new RegExp(label, "i");
             var res = re.exec(jsonObj[i].label);
-            if(res !== null){
-                return true;
+            if(hasOccurrence == false){
+                if(res !== null){
+                    hasOccurrence = true;
+                    return;
+                }
             }
-
         }
     }
-    return false;
+   
 }
 
 function createMenu(jsonObj){
