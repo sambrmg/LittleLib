@@ -28,7 +28,23 @@ var jsonMenu = [
         }
     ]},
     { "label": "Asus", "href": "http://www.asus.com" },
-    { "label": "Google", "href": "http://www.google.com" },
+    { "label": "Google", "href": "" , "n": [
+        {
+            "label":"Maps", 
+            "href": "https://www.google.com.br/maps/"
+        },{
+            "label":"My Account", 
+            "href": "#",
+            "n": [{
+                "label":"Security",
+                "href": "https://myaccount.google.com/security"
+            },
+            {
+                "label":"Privacy",
+                "href": "https://myaccount.google.com/privacy"
+            }]
+        }
+    ]},
     { "label": "Facebook", "href": "http://www.facebook.com" },
     { "label": "Microsoft", "href": "http://www.microsoft.com" },
 ];
@@ -36,16 +52,21 @@ var jsonMenu = [
 var jsonObjMenu = [];
 var hasOccurrence = false;
 
+var options = {
+    search: true,
+    searchLabel: 'Search on menu'
+};
+
 function findInNodes(jsonObj, label){
     var newObj = [];
     for(var i in jsonObj) {
         var re = new RegExp(label, "i");
         var res = re.exec(jsonObj[i].label);
-        hasOccurrence = false;
+        this.hasOccurrence = false;
         if(typeof jsonObj[i].n !== "undefined"){
             findInNodesRecursive(jsonObj[i].n, label);
         }
-        if(res !== null || hasOccurrence){
+        if(res !== null || this.hasOccurrence){
             newObj.push(jsonObj[i]);
         }
     }
@@ -61,19 +82,17 @@ function findInNodesRecursive(jsonObj, label){
         }else{
             var re = new RegExp(label, "i");
             var res = re.exec(jsonObj[i].label);
-            if(hasOccurrence == false){
+            if(this.hasOccurrence == false){
                 if(res !== null){
-                    hasOccurrence = true;
+                    this.hasOccurrence = true;
                     return;
                 }
             }
         }
     }
-   
 }
 
-function createMenu(jsonObj){
-    var llMainMenu = document.querySelector(".ll-main-menu");
+function createMenu(jsonObj, llMainMenu){
     llMainMenu.appendChild(createNodeUl(jsonObj, ""));
     addEventClickHref();
 }
@@ -139,33 +158,61 @@ function addEventClickHref(){
         });
     }
 }
+function createSearch(llMainMenu){
 
-function initMenu(jsonObjMenu){
-    createMenu(jsonObjMenu);
-    jsonObjMenu = jsonObjMenu;
-    document.querySelector("#searchMenu").addEventListener('keypress', 
-    function (event) {
-        if(event.keyCode == 13){
-            event.preventDefault();
-        }
-    });
-    document.querySelector("#searchMenu").addEventListener('keyup', 
-    function (event) {
-        
-        if(event.target.value.trim().length > 0){
-            var newObj = findInNodes(jsonObjMenu, event.target.value);
-            clearAllUlMenu();
-            createMenu(newObj);
-        }else{
-            clearAllUlMenu();
-            createMenu(jsonObjMenu);
-        }
-        
-    });
+    var elHeader = document.createElement("header");
+    var elForm = document.createElement("form");
+
+    var elLabel = document.createElement("label");
+    var textLabel = document.createTextNode(this.options.searchLabel);
+    elLabel.appendChild(textLabel);
+
+    var elInput = document.createElement("input");
+    elInput.setAttribute('name', 'searchMenu');
+    elInput.setAttribute('id', 'searchMenu');
+
+    elForm.appendChild(elLabel);
+    elForm.appendChild(elInput);
+    
+    elHeader.appendChild(elForm);
+
+    llMainMenu.appendChild(elHeader);
+}
+function initMenu(jsonObjMenu, newOptions){
+    //this.options = newOptions;
+    var llMainMenu = document.querySelector(".ll-main-menu");
+
+    this.jsonObjMenu = jsonObjMenu;
+
+    if(this.options.search){
+        createSearch(llMainMenu);
+        document.querySelector("#searchMenu").addEventListener('keypress', 
+        function (event) {
+            if(event.keyCode == 13){
+                event.preventDefault();
+            }
+        });
+        document.querySelector("#searchMenu").addEventListener('keyup', 
+        function (event) {
+            if(event.target.value.trim().length > 0){
+                var newObj = findInNodes(jsonObjMenu, event.target.value);
+                clearAllUlMenu();
+                createMenu(newObj, llMainMenu);
+            }else{
+                clearAllUlMenu();
+                createMenu(jsonObjMenu, llMainMenu);
+            }
+        });
+    }
+
+    createMenu(jsonObjMenu, llMainMenu);
+    
+    
 }
 function clearAllUlMenu(){
     var llMainMenu = document.querySelector(".ll-main-menu");
     var ul = document.querySelector(".ll-main-menu ul");
     llMainMenu.removeChild(ul);
 }
+
 initMenu(jsonMenu);
