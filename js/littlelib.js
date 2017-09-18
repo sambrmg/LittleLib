@@ -160,7 +160,7 @@ function addEventClickHref(){
 }
 function createSearch(llMainMenu){
 
-    var elHeader = document.createElement("header");
+    var elSection = document.createElement("section");
     var elForm = document.createElement("form");
 
     var elLabel = document.createElement("label");
@@ -174,9 +174,9 @@ function createSearch(llMainMenu){
     elForm.appendChild(elLabel);
     elForm.appendChild(elInput);
     
-    elHeader.appendChild(elForm);
+    elSection.appendChild(elForm);
 
-    llMainMenu.appendChild(elHeader);
+    llMainMenu.appendChild(elSection);
 }
 function initMenu(jsonObjMenu, newOptions){
     //this.options = newOptions;
