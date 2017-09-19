@@ -54,7 +54,8 @@ var hasOccurrence = false;
 
 var options = {
     search: true,
-    searchLabel: 'Search on menu'
+    searchLabel: 'Search on menu',
+    menuHorizontal: true
 };
 
 function findInNodes(jsonObj, label){
@@ -178,8 +179,7 @@ function createSearch(llMainMenu){
 
     llMainMenu.appendChild(elSection);
 }
-function initMenu(jsonObjMenu, newOptions){
-    //this.options = newOptions;
+function initMenu(jsonObjMenu){
     var llMainMenu = document.querySelector(".ll-main-menu");
 
     this.jsonObjMenu = jsonObjMenu;

@@ -9,16 +9,16 @@
     overflow-y: auto;
 }
 
-.ll-main-menu header {
+.ll-main-menu section {
     padding: 5px 10px;
 }
 
-.ll-main-menu header form label{
+.ll-main-menu section form label{
     font-size: 11px;
     color: gray;
 }
 
-.ll-main-menu header form #searchMenu{
+.ll-main-menu section form #searchMenu{
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #cbcbcb;

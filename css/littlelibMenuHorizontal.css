@@ -2,6 +2,7 @@
 .ll-main-menu{
     width: 100%;
     background-color: #ECECEC;
+    height: 60px;
 }
 
 .ll-main-menu section {
@@ -38,8 +39,6 @@
     position: relative;
 }
 
-
-
 .ll-main-menu ul{
     list-style: none;
     margin: 0;
@@ -47,7 +46,9 @@
     box-sizing: border-box;
     float: left;
 }
-
+.ll-main-menu > ul{
+    margin-top: 9px;
+}
 .ll-main-menu ul li{
     display: inline-block;
 }
@@ -56,6 +57,7 @@
 }
 .ll-main-menu > ul > li > ul{
     position: absolute;
+    background-color: #ECECEC;
 }
 .ll-main-menu > ul > li > ul, 
 .ll-main-menu > ul > li > ul > li > ul {
