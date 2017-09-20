@@ -1,7 +1,6 @@
-# LittleLib
-Little library (HTML, CSS e JS)
+# Simple Menu JS
 
-## Menu
+
 
 This is layout of Json to mount the menu.
 
@@ -39,3 +38,9 @@ If `href` is not link or route put only `"href": "#"` or `"href": ""`
     { "label": "item 3", "href": "#" }
 ]
 ```
+
+## Screenshot
+
+<div style="text-align:center">
+	<img src="https://sambrmg.github.io/simpleMenuJS/docs/simpleMenuJS.png" alt="simple menu js">
+</div>
