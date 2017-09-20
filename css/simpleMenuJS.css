@@ -1,5 +1,5 @@
 
-.ll-main-menu{
+.simple-menu-js{
     width: 250px;
     position: fixed;
     top: 0;
@@ -9,16 +9,16 @@
     overflow-y: auto;
 }
 
-.ll-main-menu section {
+.simple-menu-js section {
     padding: 5px 10px;
 }
 
-.ll-main-menu section form label{
+.simple-menu-js section form label{
     font-size: 11px;
     color: gray;
 }
 
-.ll-main-menu section form #searchMenu{
+.simple-menu-js section form #searchMenu{
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #cbcbcb;
@@ -28,7 +28,7 @@
     height: 30px;
 }
 
-.ll-main-menu a{
+.simple-menu-js a{
     display: block;
     text-decoration: none;
     color: #a0b5d7;
@@ -42,13 +42,13 @@
     position: relative;
 }
 
-.ll-main-menu a:hover{
+.simple-menu-js a:hover{
     background-color: #DADADA;
     border-radius: 4px;
 
 }
 
-.ll-main-menu ul{
+.simple-menu-js ul{
     list-style: none;
     margin: 0;
     padding: 0px; 
@@ -56,29 +56,29 @@
 }
 
 /** Level 1 */
-.ll-main-menu > ul > li > a{
+.simple-menu-js > ul > li > a{
     padding-left: 22px;
 }
 /** Level 2 */
-.ll-main-menu > ul > li > ul > li > a{
+.simple-menu-js > ul > li > ul > li > a{
     padding-left: 22px;
 }
 
 /** Level 3 */
-.ll-main-menu > ul > li > ul > li > ul > li > a{
+.simple-menu-js > ul > li > ul > li > ul > li > a{
     padding-left: 35px;
 }
 
-.ll-main-menu > ul > li > ul{
+.simple-menu-js > ul > li > ul{
     padding-left: 20px;
 }
 
-.ll-main-menu > ul > li > ul, 
-.ll-main-menu > ul > li > ul > li > ul {
+.simple-menu-js > ul > li > ul, 
+.simple-menu-js > ul > li > ul > li > ul {
     display: none;
 }
-.ll-main-menu > ul > li > ul.open, 
-.ll-main-menu > ul > li > ul > li > ul.open{
+.simple-menu-js > ul > li > ul.open, 
+.simple-menu-js > ul > li > ul > li > ul.open{
     display: block;
 }
 
@@ -100,10 +100,10 @@
 }
 
 @media screen and (max-width: 450px) {
-    nav.ll-main-menu{
+    nav.simple-menu-js{
         width: 100%;
     }    
-    nav.ll-main-menu a {
+    nav.simple-menu-js a {
         font-size: 14px;
     }
 }

@@ -2,7 +2,7 @@
     
     var hasOccurrence = false;
 
-    this.llMenuOptions = {
+    this.simpleMenuJSOptions = {
         search: true,
         searchLabel: 'Search on menu',
         menuHorizontal: true
@@ -43,8 +43,8 @@
         }
     }
 
-    function createMenu(jsonObj, llMainMenu){
-        llMainMenu.appendChild(createNodeUl(jsonObj, ""));
+    function createMenu(jsonObj, simpleMenuJS){
+        simpleMenuJS.appendChild(createNodeUl(jsonObj, ""));
         addEventClickHref();
     }
 
@@ -87,7 +87,7 @@
     }
 
     function addEventClickHref(){
-        var allUlMainMenu = document.querySelectorAll('.ll-main-menu a');
+        var allUlMainMenu = document.querySelectorAll('.simple-menu-js a');
         for (var i = 0; i < allUlMainMenu.length; i++) {
             if( allUlMainMenu[i].nextSibling){
                 allUlMainMenu[i].classList.add("icon-plus");
@@ -109,13 +109,13 @@
             });
         }
     }
-    function createSearch(llMainMenu){
+    function createSearch(simpleMenuJS){
 
         var elSection = document.createElement("section");
         var elForm = document.createElement("form");
 
         var elLabel = document.createElement("label");
-        var textLabel = document.createTextNode(this.llMenuOptions.searchLabel);
+        var textLabel = document.createTextNode(this.simpleMenuJSOptions.searchLabel);
         elLabel.appendChild(textLabel);
 
         var elInput = document.createElement("input");
@@ -127,13 +127,13 @@
         
         elSection.appendChild(elForm);
 
-        llMainMenu.appendChild(elSection);
+        simpleMenuJS.appendChild(elSection);
     }
-    this.llMenuInit = function (jsonObjMenu){
-        var llMainMenu = document.querySelector(".ll-main-menu");
+    this.simpleMenuJSinit = function (jsonObjMenu){
+        var simpleMenuJS = document.querySelector(".simple-menu-js");
 
-        if(this.llMenuOptions.search){
-            createSearch(llMainMenu);
+        if(this.simpleMenuJSOptions.search){
+            createSearch(simpleMenuJS);
             document.querySelector("#searchMenu").addEventListener('keypress', 
             function (event) {
                 if(event.keyCode == 13){
@@ -145,21 +145,21 @@
                 if(event.target.value.trim().length > 0){
                     var newObj = findInNodes(jsonObjMenu, event.target.value);
                     clearAllUlMenu();
-                    createMenu(newObj, llMainMenu);
+                    createMenu(newObj, simpleMenuJS);
                 }else{
                     clearAllUlMenu();
-                    createMenu(jsonObjMenu, llMainMenu);
+                    createMenu(jsonObjMenu, simpleMenuJS);
                 }
             });
         }
-        createMenu(jsonObjMenu, llMainMenu);
+        createMenu(jsonObjMenu, simpleMenuJS);
     }
 
     function clearAllUlMenu(){
-        var llMainMenu = document.querySelector(".ll-main-menu");
-        var ul = document.querySelector(".ll-main-menu ul");
-        llMainMenu.removeChild(ul);
+        var simpleMenuJS = document.querySelector(".simple-menu-js");
+        var ul = document.querySelector(".simple-menu-js ul");
+        simpleMenuJS.removeChild(ul);
     }
 })();
 
-this.llMenuInit(jsonMenu);
+this.simpleMenuJSinit(jsonMenu);
