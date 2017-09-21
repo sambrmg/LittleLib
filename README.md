@@ -1,10 +1,10 @@
 # Simple Menu JS
 
+This is a menu in javascript to simplify your project when you need a dynamic menu. Just put Json with this structure.  
 
+Json structure to mount the menu.
 
-This is layout of Json to mount the menu.
-
-You need `label`, `href` and `n` if has child, if no child don't put index `n` like this `{ "label": "item 2", "href": "#" }`
+You need `label`, `href` and `n` if has child, if has no child don't put index `n` like this `{ "label": "item 2", "href": "#" }`
 If `href` is not link or route put only `"href": "#"` or `"href": ""`
 
 ```json
