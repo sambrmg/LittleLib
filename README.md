@@ -29,6 +29,9 @@ To initialize menu you need to call `this.simpleMenuJSinit(jsonMenu)` and pass b
             </li>
         </ul>
     </li>
+    <li>
+        <a href="http://www.facebook.com">Facebook</a>
+    </li>
 </ul>
 ```
 
@@ -41,32 +44,33 @@ If `href` is not link or route put only `"href": "#"` or `"href": ""`
 ```json
 [
     { 
-        "label": "item 1", 
-        "href": " ",
+        "label": "Google", 
+        "href": "" , 
         "n": [
             {
-                "label":"subitem 1", 
+                "label":"Maps", 
+                "href": "https://www.google.com.br/maps/"
+            },
+            {
+                "label":"My Account", 
                 "href": "#",
-                "n": [{
-                    "label":"Google",
-                    "href": "http://www.google.com.br"
-                }]
-            },{
-                "label":"subitem 2", 
-                "href": "#",
-                "n": [{
-                    "label":"sub-subitem 2.1",
-                    "href": "#"
-                },
-                {
-                    "label":"sub-subitem 2.2",
-                    "href": "#"
-                }]
-            }
+                "n": [
+                    {
+                        "label":"Security",
+                        "href": "https://myaccount.google.com/security"
+                    },
+                    {
+                        "label":"Privacy",
+                        "href": "https://myaccount.google.com/privacy"
+                    }
+                ]
+            }   
         ]
     },
-    { "label": "item 2", "href": "#" },
-    { "label": "item 3", "href": "#" }
+    { 
+        "label": "Facebook", 
+        "href": "http://www.facebook.com" 
+    },
 ]
 ```
 
