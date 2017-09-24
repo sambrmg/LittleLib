@@ -53,27 +53,33 @@
         for(var i in jsonObj) {
             if (jsonObj.hasOwnProperty(i)) {
                 if(typeof jsonObj[i].n === "undefined"){
-                    elUl.appendChild(createNodeLi(jsonObj[i].label, jsonObj[i].href, ""));
+                    elUl.appendChild(createNodeLi(jsonObj[i], ""));
                 }else{
                     var ul = createNodeUl(jsonObj[i].n);
-                    elUl.appendChild(createNodeLi(jsonObj[i].label, jsonObj[i].href, ul));
+                    elUl.appendChild(createNodeLi(jsonObj[i], ul));
                 }
             }
         }
         return elUl;
     }
 
-    function createNodeLi(label, href, ul){
-        var elA = createElementAhref(label, href);
+    function createNodeLi(objA, ul){
+        var elA = createElementAhref(objA);
         var elLi = createElementLi(elA, ul);
         return elLi;
     }
 
-    function createElementAhref(label, href){
+    function createElementAhref(objA){
         var elA = document.createElement("a");        
-        var text = document.createTextNode(label);
+        var text = document.createTextNode(objA['label']);
         elA.appendChild(text);    
-        elA.setAttribute('href', href);
+        elA.setAttribute('href', objA['href']);
+        if(typeof objA['target'] !== "undefined"){
+            if(objA['target'].trim() !== ""){
+                elA.setAttribute('target', objA['target']);
+            }
+        }
+       
         return elA;
     }
 

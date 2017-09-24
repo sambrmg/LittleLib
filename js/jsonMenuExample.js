@@ -1,5 +1,5 @@
 var jsonMenu = [
-    { "label": "Amazon", "href": "http://www.amazon.com" },
+    { "label": "Amazon", "href": "http://www.amazon.com" , "target": "_blank" },
     { "label": "Apple", "href": "#", "n": [
         {
             "label":"Mac", 
