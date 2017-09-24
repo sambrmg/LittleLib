@@ -49,7 +49,8 @@ If `href` is not link or route put only `"href": "#"` or `"href": ""`
         "n": [
             {
                 "label":"Maps", 
-                "href": "https://www.google.com.br/maps/"
+                "href": "https://www.google.com.br/maps/",
+		"target": "_blank"
             },
             {
                 "label":"My Account", 
@@ -57,11 +58,13 @@ If `href` is not link or route put only `"href": "#"` or `"href": ""`
                 "n": [
                     {
                         "label":"Security",
-                        "href": "https://myaccount.google.com/security"
+                        "href": "https://myaccount.google.com/security",
+			"target": "_blank"
                     },
                     {
                         "label":"Privacy",
-                        "href": "https://myaccount.google.com/privacy"
+                        "href": "https://myaccount.google.com/privacy",
+			"target": "_blank"
                     }
                 ]
             }   
@@ -69,7 +72,8 @@ If `href` is not link or route put only `"href": "#"` or `"href": ""`
     },
     { 
         "label": "Facebook", 
-        "href": "http://www.facebook.com" 
+        "href": "http://www.facebook.com",
+	"target": "_blank"
     },
 ]
 ```
