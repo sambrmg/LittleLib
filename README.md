@@ -1,41 +1,76 @@
 # Simple Menu JS
 
+This is a menu in javascript to simplify your project when you need a dynamic menu. Just put Json with this structure.  
 
+## How to use
 
-This is layout of Json to mount the menu.
+Just put `<nav class="simple-menu-js"></nav>` in your html after `body` tag.
+To initialize menu you need to call `this.simpleMenuJSinit(jsonMenu)` and pass by parameter Json Object Menu.
 
-You need `label`, `href` and `n` if has child, if no child don't put index `n` like this `{ "label": "item 2", "href": "#" }`
+## HTML Structure
+```html
+<ul>
+    <li>
+        <a href="" class="icon-minus">Google</a>
+        <ul>
+            <li>
+                <a href="https://www.google.com.br/maps/">Maps</a>
+            </li>
+            <li>
+                <a href="#" class="icon-minus">My Account</a>
+                <ul>
+                    <li>
+                        <a href="https://myaccount.google.com/security">Security</a>
+                    </li>
+                    <li>
+                        <a href="https://myaccount.google.com/privacy">Privacy</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="http://www.facebook.com">Facebook</a>
+    </li>
+</ul>
+```
+
+## Json Structure 
+Json structure to mount the menu.
+
+You need `label`, `href` and `n` if has child, if has no child don't put index `n` like this `{ "label": "item 2", "href": "#" }`
 If `href` is not link or route put only `"href": "#"` or `"href": ""`
 
 ```json
 [
     { 
-        "label": "item 1", 
-        "href": " ",
+        "label": "Google", 
+        "href": "" , 
         "n": [
             {
-                "label":"subitem 1", 
+                "label":"Maps", 
+                "href": "https://www.google.com.br/maps/"
+            },
+            {
+                "label":"My Account", 
                 "href": "#",
-                "n": [{
-                    "label":"Google",
-                    "href": "http://www.google.com.br"
-                }]
-            },{
-                "label":"subitem 2", 
-                "href": "#",
-                "n": [{
-                    "label":"sub-subitem 2.1",
-                    "href": "#"
-                },
-                {
-                    "label":"sub-subitem 2.2",
-                    "href": "#"
-                }]
-            }
+                "n": [
+                    {
+                        "label":"Security",
+                        "href": "https://myaccount.google.com/security"
+                    },
+                    {
+                        "label":"Privacy",
+                        "href": "https://myaccount.google.com/privacy"
+                    }
+                ]
+            }   
         ]
     },
-    { "label": "item 2", "href": "#" },
-    { "label": "item 3", "href": "#" }
+    { 
+        "label": "Facebook", 
+        "href": "http://www.facebook.com" 
+    },
 ]
 ```
 
