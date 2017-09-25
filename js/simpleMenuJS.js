@@ -1,10 +1,12 @@
 (function(){
     
     var hasOccurrence = false;
+    var hasWordOnInput = false;
 
     this.simpleMenuJSOptions = {
+        labelClearInput: 'Clear',
+        labeSearch: 'Search on menu',
         search: true,
-        searchLabel: 'Search on menu',
         menuHorizontal: true
     };
 
@@ -121,7 +123,7 @@
         var elForm = document.createElement("form");
 
         var elLabel = document.createElement("label");
-        var textLabel = document.createTextNode(this.simpleMenuJSOptions.searchLabel);
+        var textLabel = document.createTextNode(this.simpleMenuJSOptions.labeSearch);
         elLabel.appendChild(textLabel);
 
         var elInput = document.createElement("input");
@@ -148,7 +150,9 @@
             });
             document.querySelector("#searchMenu").addEventListener('keyup', 
             function (event) {
-                if(event.target.value.trim().length > 0){
+                hasFilter(event.target.value);
+
+                if(hasWordOnInput){
                     var newObj = findInNodes(jsonObjMenu, event.target.value);
                     clearAllUlMenu();
                     createMenu(newObj, simpleMenuJS);
@@ -160,7 +164,14 @@
         }
         createMenu(jsonObjMenu, simpleMenuJS);
     }
-
+    function hasFilter(valueInput){
+        if(valueInput.trim().length > 0){
+            hasWordOnInput = true;
+        }else{
+            hasWordOnInput = false;
+        }
+    }
+    
     function clearAllUlMenu(){
         var simpleMenuJS = document.querySelector(".simple-menu-js");
         var ul = document.querySelector(".simple-menu-js ul");
