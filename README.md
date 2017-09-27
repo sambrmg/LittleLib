@@ -40,7 +40,7 @@ Json structure to mount the menu.
 
 You need `label`, `href` and `n` if has child, if has no child don't put index `n` like this `{ "label": "item 2", "href": "#" }`
 If `href` is not link or route put only `"href": "#"` or `"href": ""`
-
+If you need to open in another tab use  `"target": "_blank"`
 ```json
 [
     { 
@@ -50,7 +50,7 @@ If `href` is not link or route put only `"href": "#"` or `"href": ""`
             {
                 "label":"Maps", 
                 "href": "https://www.google.com.br/maps/",
-		"target": "_blank"
+		        "target": "_blank"
             },
             {
                 "label":"My Account", 
@@ -59,12 +59,12 @@ If `href` is not link or route put only `"href": "#"` or `"href": ""`
                     {
                         "label":"Security",
                         "href": "https://myaccount.google.com/security",
-			"target": "_blank"
+			            "target": "_blank"
                     },
                     {
                         "label":"Privacy",
                         "href": "https://myaccount.google.com/privacy",
-			"target": "_blank"
+			            "target": "_blank"
                     }
                 ]
             }   
