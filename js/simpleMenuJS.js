@@ -6,8 +6,7 @@
     this.simpleMenuJSOptions = {
         labelClearInput: 'Clear',
         labeSearch: 'Search on menu',
-        search: true,
-        menuHorizontal: true
+        search: true
     };
 
     function findInNodes(jsonObj, label){
